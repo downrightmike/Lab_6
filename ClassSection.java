@@ -19,7 +19,7 @@ public class ClassSection{
     private String meetingTimes;
 
     public ClassSection(){ 
-        System.out.println("\nIn ClassSection() default constructor"); // Just to show we're here.
+        //System.out.println("\nIn ClassSection() default constructor"); // Just to show we're here.
 
     CRN = 0;
     courseNumber = 0;
@@ -34,7 +34,7 @@ public class ClassSection{
    
     }
     public ClassSection(int CRN, int courseNumber, int capacity, int enrollment, int instructorID, String mode, String campus, String departmentCode, String meetingDays, String meetingTimes){ 
-        System.out.println("\nIn ClassSection() all params constructor"); // Just to show we're here.
+        //System.out.println("\nIn ClassSection() all params constructor"); // Just to show we're here.
     // This constructor will assign (empty string) to String attributes, 0 to int attributes 
     // and 0.0 to double attributes, if any.
     }

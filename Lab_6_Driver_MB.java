@@ -10,7 +10,7 @@
 public class Lab_6_Driver_MB {       
         public static void main(String[] args) {           
         // Create a ClassSection object using the default constructor
-        ClassSection class1 = new ClassSection(20008, 131, 30, 30, 654, "online", "East", "CIS", "N/A", "N/A" );
+        ClassSection class1 = new ClassSection(20, 1, 30, 30, 6, "online", "East", "CIS", "N/A", "N/A" );
         ClassSection class3 = new ClassSection();
         // Create a ClassSection object using the default constructor
        /* ClassSection class2 = new ClassSection();
