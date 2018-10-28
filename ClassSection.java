@@ -7,11 +7,11 @@
 ********************************************************************************************************************/
         
 public class ClassSection{
-    private int CRN;
-    private int courseNumber;
-    private int capacity;
-    private int enrollment;
-    private int instructorID;
+    private Integer CRN;
+    private Integer courseNumber;
+    private Integer capacity;
+    private Integer enrollment;
+    private Integer instructorID;
     private String mode;
     private String campus;
     private String departmentCode;
@@ -33,43 +33,52 @@ public class ClassSection{
     meetingTimes = "";
    
     }
-    public ClassSection(int CRN, int courseNumber, int capacity, int enrollment, int instructorID, String mode, String campus, String departmentCode, String meetingDays, String meetingTimes){ 
+    public ClassSection(Integer newCRN, Integer newCourseNumber, Integer newCapacity, Integer newEnrollment, Integer newInstructorID, String newMode, String newCampus, String newDepartmentCode, String newMeetingDays, String newMeetingTimes){ 
         //System.out.println("\nIn ClassSection() all params constructor"); // Just to show we're here.
-    // This constructor will assign (empty string) to String attributes, 0 to int attributes 
-    // and 0.0 to double attributes, if any.
+    
+        CRN = newCRN;
+        courseNumber = newCourseNumber;
+        capacity = newCapacity;
+        enrollment = newEnrollment;
+        instructorID = newInstructorID;
+        mode = newMode;
+        campus = newCampus;
+        departmentCode = newDepartmentCode;
+        meetingDays = newMeetingDays;
+        meetingTimes = newMeetingTimes;
     }
           // Define "setter" a.k.a. mutator methods.
-   public void setCRN( int CRN ){
-    this.setCRN( CRN );  }
-   public void setCourseNumber( int courseNumber ){
-    this.setCourseNumber( courseNumber );  }
-   public void setCapacity( int capacity ){
-    this.setCapacity( capacity );  }
-   public void setEnrollment( int enrollment ){
-    this.setEnrollment( enrollment );  }
-   public void setInstructorID( int instructorID ){
-    this.setInstructorID( instructorID );  }
-   public void setMode(String mode ){
-    this.setMode( mode );  }
-   public void setCampus(String campus ){
-    this.setCampus( campus );  }
-   public void setDepartmentCode(String departmentCode ){
-    this.setDepartmentCode(  departmentCode);  }
-   public void setMeetingDays(String meetingDays ){
-    this.setMeetingDays(  meetingDays);  }
-   public void setMeetingTimes(String meetingTimes ){
-    this.setMeetingTimes( meetingTimes );  }
+   public void setCRN( Integer newCRN ){
+     CRN = newCRN ;  }
+   public void setCourseNumber( Integer newCourseNumber ){
+     courseNumber = newCourseNumber ;  }
+   public void setCapacity( Integer newCapacity ){
+    capacity = newCapacity ;  }
+   public void setEnrollment( Integer newEnrollment ){
+    enrollment = newEnrollment ;  }
+   public void setInstructorID( Integer newInstructorID ){
+    instructorID = newInstructorID ;  }
+   public void setMode(String newMode ){
+    mode = newMode ;  }
+   public void setCampus(String newCampus ){
+    campus = newCampus ;  }
+   public void setDepartmentCode(String newDepartmentCode ){
+    departmentCode =  newDepartmentCode;  }
+   public void setMeetingDays(String newMeetingDays ){
+    meetingDays =  newMeetingDays;  }
+   public void setMeetingTimes(String newMeetingTimes ){
+    meetingTimes = newMeetingTimes ;  }
    
     // Define "getter" a.k.a. accessor methods.
-    public int getCRN(){
+    public Integer getCRN(){
         return this.CRN ;  }
-       public int getCourseNumber(){
+       public Integer getCourseNumber(){
         return this.courseNumber ;  }
-       public int getCapacity(){
+       public Integer getCapacity(){
         return this.capacity ;  }
-       public int getEnrollment(){
+       public Integer getEnrollment(){
         return this.enrollment ;  }
-       public int getInstructorID(){
+       public Integer getInstructorID(){
         return this.instructorID ;  }
        public String getMode(){
         return this.mode ;  }
@@ -87,7 +96,7 @@ public class ClassSection{
     public String toString(){
         StringBuffer strBuf = new StringBuffer("Class Section Data: \n");
         
-        strBuf.append("***********************************\n\n");
+        strBuf.append("***********************************\n");
         strBuf.append("CRN :                 ");
         strBuf.append(CRN) ;
         strBuf.append( "\n\n") ;    
@@ -117,7 +126,7 @@ public class ClassSection{
         strBuf.append( "\n\n") ;    
         strBuf.append("Instructor's ID :     ");
         strBuf.append(instructorID) ;
-        strBuf.append( "\n\n") ;    
+        strBuf.append( "\n") ;    
         strBuf.append( "***********************************") ;    
         
         return strBuf.toString() ;
