@@ -21,54 +21,128 @@ public class ClassSection{
     public ClassSection(){ 
         //System.out.println("\nIn ClassSection() default constructor"); // Just to show we're here.
 
-    CRN = 0;
-    courseNumber = 0;
-    capacity = 0;
-    enrollment = 0;
-    instructorID = 0;
-    mode = "";
-    campus = "";
-    departmentCode = "";
-    meetingDays = "";
-    meetingTimes = "";
+    this.CRN = 0;
+    this.courseNumber = 0;
+    this.capacity = 0;
+    this.enrollment = 0;
+    this.instructorID = 0;
+    this.mode = "";
+    this.campus = "";
+    this.departmentCode = "";
+    this.meetingDays = "";
+    this.meetingTimes = "";
    
     }
     public ClassSection(Integer newCRN, Integer newCourseNumber, Integer newCapacity, Integer newEnrollment, Integer newInstructorID, String newMode, String newCampus, String newDepartmentCode, String newMeetingDays, String newMeetingTimes){ 
         //System.out.println("\nIn ClassSection() all params constructor"); // Just to show we're here.
     
-        CRN = newCRN;
-        courseNumber = newCourseNumber;
-        capacity = newCapacity;
-        enrollment = newEnrollment;
-        instructorID = newInstructorID;
-        mode = newMode;
-        campus = newCampus;
-        departmentCode = newDepartmentCode;
-        meetingDays = newMeetingDays;
-        meetingTimes = newMeetingTimes;
+        this.CRN = setCRN(newCRN);
+        this.courseNumber = setCourseNumber(newCourseNumber);
+        this.capacity = setCapacity(newCapacity);
+        this.enrollment = setEnrollment( newEnrollment);
+        this.instructorID = setInstructorID(  newInstructorID);
+        this.mode = setMode(  newMode);
+        this.campus = setCampus(  newCampus);
+        this.departmentCode = setDepartmentCode(  newDepartmentCode);
+        this.meetingDays = setMeetingDays(  newMeetingDays);
+        this.meetingTimes = setMeetingTimes( newMeetingTimes);
     }
           // Define "setter" a.k.a. mutator methods.
-   public void setCRN( Integer newCRN ){
-     CRN = newCRN ;  }
-   public void setCourseNumber( Integer newCourseNumber ){
-     courseNumber = newCourseNumber ;  }
-   public void setCapacity( Integer newCapacity ){
-    capacity = newCapacity ;  }
-   public void setEnrollment( Integer newEnrollment ){
-    enrollment = newEnrollment ;  }
-   public void setInstructorID( Integer newInstructorID ){
-    instructorID = newInstructorID ;  }
-   public void setMode(String newMode ){
-    mode = newMode ;  }
-   public void setCampus(String newCampus ){
-    campus = newCampus ;  }
-   public void setDepartmentCode(String newDepartmentCode ){
-    departmentCode =  newDepartmentCode;  }
-   public void setMeetingDays(String newMeetingDays ){
-    meetingDays =  newMeetingDays;  }
-   public void setMeetingTimes(String newMeetingTimes ){
-    meetingTimes = newMeetingTimes ;  }
+   public Integer  setCRN( Integer newCRN ){
+    this.CRN = newCRN ; return this.CRN; }
+   public Integer setCourseNumber( Integer newCourseNumber ){
+    this.courseNumber = newCourseNumber ; return this.courseNumber; }
+   public Integer setCapacity( Integer newCapacity ){
+    this.capacity = newCapacity ; return this.capacity;  }
+   public Integer setEnrollment( Integer newEnrollment ){
+    this.enrollment = newEnrollment ;  return this.enrollment; }
+   public Integer setInstructorID( Integer newInstructorID ){
+    this.instructorID = newInstructorID ; return this.instructorID;  }
+   public String setMode(String newMode ){
+    String[] modes = new String[3];
+     modes[0] = "online";
+     modes[1] = "hybrid";
+     modes[2] = "classroom";
+    this.mode = "N/A"; //Setting a default
+
+    for(int i = 0; i < modes.length; i++){
+        if(newMode.equals(modes[i])){this.mode = newMode ; }
+        }
+        return this.mode;
+        }
+
+   public String setCampus(String newCampus ){
+       //v2 #5 Campus, like East or West
+      /*Campuses from Pima.edu 
+        "Community",
+        "Desert Vista",
+        "Downtown",
+        "East",
+        "Northwest",
+        "West" */
+    String[] campuses = new String[6];
+        campuses[0] = "Community";
+        campuses[1] = "Desert Vista";
+        campuses[2] = "Downtown";
+        campuses[3] = "East";
+        campuses[4] = "Northwest";
+        campuses[5] = "West";
+
+        this.campus = "N/A"; //Setting a default
+
+      for(int i = 0; i < campuses.length; i++){
+        if(newCampus.equals(campuses[i])){this.campus = newCampus ; }
+        }
+        return this.campus;
+     }
+
+
+   public String setDepartmentCode(String newDepartmentCode ){
+    this.departmentCode =  newDepartmentCode;  return this.departmentCode;}
+
+   public String setMeetingDays(String newMeetingDays ){
+       //v2 #6 Meeting days (NAfor online classes, 1234567 for Monday through Sunday. 
+       //TTh would be 24)
+      //set meeting days to that string
+      StringBuffer strBuf = new StringBuffer("");
+       // Check for online, set to default NA
+       if(this.mode.equals("online")){this.meetingDays = "N/A"; return this.meetingDays ;}else{}
+
+        //get each location (to array?)
+        char[] charArray = new char[newMeetingDays.length()];
+        for(int i = 0; i < newMeetingDays.length(); i++){
+            charArray[i] = newMeetingDays.charAt(i);
+            //System.out.println(charArray[i]);
+        
+        //append each day to a string
+        switch (charArray[i]) {
+             case '1': strBuf.append("Monday"); strBuf.append(", ");  break;
+             case '2': strBuf.append("Tuesday"); strBuf.append(", ");  break;
+             case '3': strBuf.append("Wednesday"); strBuf.append(", ");  break;
+             case '4': strBuf.append("Thursday"); strBuf.append(", ");  break;
+             case '5': strBuf.append("Friday"); strBuf.append(", ");  break;
+             case '6': strBuf.append("Saturday"); strBuf.append(", ");  break;
+             case '7': strBuf.append("Sunday"); strBuf.append(", ");  break;
+             default: strBuf.append("N/A  "); break;
+            }  
+         } //end of for
+         int strBufLength = strBuf.length();
+
+         strBuf.delete(strBufLength-2, strBufLength); //trim the last append off by 2
+         this.meetingDays = strBuf.toString();
+         return this.meetingDays;
+        }
+
+   public String setMeetingTimes(String newMeetingTimes ){
+       //v2 #7 Meeting times (NA, or free form such as: 12 noon to 2pm)
+       if(this.mode.equals("online") || this.mode.equals("")){//check online classes also
+           this.meetingTimes = "N/A"; return this.meetingTimes ;}
+           else{this.meetingTimes = newMeetingTimes ;  return this.meetingTimes;
+        }
+       }
    
+
+/////////////////////////////////////////////////////////////////////////////////////////////////
     // Define "getter" a.k.a. accessor methods.
     public Integer getCRN(){
         return this.CRN ;  }
@@ -98,34 +172,34 @@ public class ClassSection{
         
         strBuf.append("***********************************\n");
         strBuf.append("CRN :                 ");
-        strBuf.append(CRN) ;
+        strBuf.append(this.CRN) ;
         strBuf.append( "\n\n") ;    
         strBuf.append("Department :          ");
-        strBuf.append(departmentCode) ;
+        strBuf.append(this.departmentCode) ;
         strBuf.append( "\n\n") ;    
         strBuf.append("Course Number :       ");
-        strBuf.append(courseNumber) ;
+        strBuf.append(this.courseNumber) ;
         strBuf.append( "\n\n") ;    
         strBuf.append("Instructional Mode :  ");
-        strBuf.append(mode) ;
+        strBuf.append(this.mode) ;
         strBuf.append( "\n\n") ;    
         strBuf.append("Campus :              ");
-        strBuf.append(campus) ;
+        strBuf.append(this.campus) ;
         strBuf.append( "\n\n") ;    
         strBuf.append("Meeting Days :        ");
-        strBuf.append(meetingDays) ;
+        strBuf.append(this.meetingDays) ;
         strBuf.append( "\n\n") ;    
         strBuf.append("Meeting Times :       ");
-        strBuf.append(meetingTimes) ;
+        strBuf.append(this.meetingTimes) ;
         strBuf.append( "\n\n") ;    
         strBuf.append("Capacity :            ");
-        strBuf.append(capacity) ;
+        strBuf.append(this.capacity) ;
         strBuf.append( "\n\n") ;    
         strBuf.append("Enrollment :          ");
-        strBuf.append(enrollment) ;
+        strBuf.append(this.enrollment) ;
         strBuf.append( "\n\n") ;    
         strBuf.append("Instructor's ID :     ");
-        strBuf.append(instructorID) ;
+        strBuf.append(this.instructorID) ;
         strBuf.append( "\n") ;    
         strBuf.append( "***********************************") ;    
         
