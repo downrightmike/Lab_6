@@ -36,29 +36,34 @@ public class ClassSection{
     public ClassSection(Integer newCRN, Integer newCourseNumber, Integer newCapacity, Integer newEnrollment, Integer newInstructorID, String newMode, String newCampus, String newDepartmentCode, String newMeetingDays, String newMeetingTimes){ 
         //System.out.println("\nIn ClassSection() all params constructor"); // Just to show we're here.
     
-        this.CRN = setCRN(newCRN);
-        this.courseNumber = setCourseNumber(newCourseNumber);
-        this.capacity = setCapacity(newCapacity);
-        this.enrollment = setEnrollment( newEnrollment);
-        this.instructorID = setInstructorID(  newInstructorID);
-        this.mode = setMode(  newMode);
-        this.campus = setCampus(  newCampus);
-        this.departmentCode = setDepartmentCode(  newDepartmentCode);
-        this.meetingDays = setMeetingDays(  newMeetingDays);
-        this.meetingTimes = setMeetingTimes( newMeetingTimes);
+        this.CRN = newCRN;
+        this.courseNumber = newCourseNumber;
+        this.capacity = newCapacity;
+        this.enrollment = newEnrollment;
+        this.instructorID = newInstructorID;
+        this.mode = newMode;
+        this.campus = newCampus;
+        this.departmentCode = newDepartmentCode;
+        this.meetingDays = newMeetingDays;
+        this.meetingTimes = newMeetingTimes;
     }
           // Define "setter" a.k.a. mutator methods.
-   public Integer  setCRN( Integer newCRN ){
-    this.CRN = newCRN ; return this.CRN; }
-   public Integer setCourseNumber( Integer newCourseNumber ){
-    this.courseNumber = newCourseNumber ; return this.courseNumber; }
-   public Integer setCapacity( Integer newCapacity ){
-    this.capacity = newCapacity ; return this.capacity;  }
-   public Integer setEnrollment( Integer newEnrollment ){
-    this.enrollment = newEnrollment ;  return this.enrollment; }
-   public Integer setInstructorID( Integer newInstructorID ){
-    this.instructorID = newInstructorID ; return this.instructorID;  }
-   public String setMode(String newMode ){
+   public void  setCRN( Integer newCRN ){
+    this.CRN = newCRN ; //return this.CRN; 
+}
+   public void setCourseNumber( Integer newCourseNumber ){
+    this.courseNumber = newCourseNumber ; //return this.courseNumber; 
+}
+   public void setCapacity( Integer newCapacity ){
+    this.capacity = newCapacity ;// return this.capacity; 
+ }
+   public void setEnrollment( Integer newEnrollment ){
+    this.enrollment = newEnrollment ;  //return this.enrollment; 
+}
+   public void setInstructorID( Integer newInstructorID ){
+    this.instructorID = newInstructorID ; //return this.instructorID;
+  }
+   public void setMode(String newMode ){
     String[] modes = new String[3];
      modes[0] = "online";
      modes[1] = "hybrid";
@@ -67,11 +72,14 @@ public class ClassSection{
 
     for(int i = 0; i < modes.length; i++){
         if(newMode.equals(modes[i])){this.mode = newMode ; }
+         
+        else {
+        this.mode = modes[i];
         }
-        return this.mode;
-        }
+    }
+}
 
-   public String setCampus(String newCampus ){
+   public void setCampus(String newCampus ){
        //v2 #5 Campus, like East or West
       /*Campuses from Pima.edu 
         "Community",
@@ -92,21 +100,25 @@ public class ClassSection{
 
       for(int i = 0; i < campuses.length; i++){
         if(newCampus.equals(campuses[i])){this.campus = newCampus ; }
+        else {
+        this.campus = campuses[i];
         }
-        return this.campus;
      }
+    }
 
 
-   public String setDepartmentCode(String newDepartmentCode ){
-    this.departmentCode =  newDepartmentCode;  return this.departmentCode;}
+   public void setDepartmentCode(String newDepartmentCode ){
+    this.departmentCode =  newDepartmentCode;  //return this.departmentCode;
+}
 
-   public String setMeetingDays(String newMeetingDays ){
+   public void setMeetingDays(String newMeetingDays ){
        //v2 #6 Meeting days (NAfor online classes, 1234567 for Monday through Sunday. 
        //TTh would be 24)
       //set meeting days to that string
       StringBuffer strBuf = new StringBuffer("");
        // Check for online, set to default NA
-       if(this.mode.equals("online")){this.meetingDays = "N/A"; return this.meetingDays ;}else{}
+       if(this.mode.equals("online")){this.meetingDays = "N/A"; //return this.meetingDays ;
+    }else{
 
         //get each location (to array?)
         char[] charArray = new char[newMeetingDays.length()];
@@ -126,21 +138,23 @@ public class ClassSection{
              default: strBuf.append("N/A  "); break;
             }  
          } //end of for
+        }
          int strBufLength = strBuf.length();
 
          strBuf.delete(strBufLength-2, strBufLength); //trim the last append off by 2
          this.meetingDays = strBuf.toString();
-         return this.meetingDays;
+         //return this.meetingDays;
         }
 
-   public String setMeetingTimes(String newMeetingTimes ){
+   public void setMeetingTimes(String newMeetingTimes ){
        //v2 #7 Meeting times (NA, or free form such as: 12 noon to 2pm)
        if(this.mode.equals("online") || this.mode.equals("")){//check online classes also
-           this.meetingTimes = "N/A"; return this.meetingTimes ;}
-           else{this.meetingTimes = newMeetingTimes ;  return this.meetingTimes;
+           this.meetingTimes = "N/A"; //return this.meetingTimes ;
+        }
+           else{this.meetingTimes = newMeetingTimes ;  //return this.meetingTimes;
         }
        }
-   
+    
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
     // Define "getter" a.k.a. accessor methods.

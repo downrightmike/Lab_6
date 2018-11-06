@@ -27,10 +27,10 @@ public class Lab_6_Driver_MB {
                class1.setMeetingTimes( "N/A" ); 
         
         //4) Next, it will create a second instance of a class section object using the constructor that accepts values for all of its attributes.
-        ClassSection class2 = new ClassSection(20009, 182, 31, 31, 664, "hybrid", "East", "CIS", "24", "12:00p - 2:50p" );
+        //ClassSection class2 = new ClassSection(20009, 182, 31, 31, 664, "hybrid", "East", "CIS", "24", "12:00p - 2:50p" );
         //ClassSection class2 = new ClassSection(20009, 182, 31, 31, 664, "hybrid", "East", "CIS", "1245", "12:00p - 2:50p" );
         //ClassSection class2 = new ClassSection(20009, 182, 31, 31, 664, "hybrid", "East", "CIS", "1234567", "12:00p - 2:50p" );
-        //ClassSection class2 = new ClassSection(20009, 182, 31, 31, 664, "hybrid", "East", "CIS", "3456712", "12:00p - 2:50p" );
+        ClassSection class2 = new ClassSection(20009, 182, 31, 31, 664, "hybrid", "East", "CIS", "3456712", "12:00p - 2:50p" );
         
  
         //3) After doing this, the driver will use either println or printf to display the String returned by toString.
